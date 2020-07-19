@@ -1,0 +1,16 @@
+Flask
+jsonify
+request
+MySQL
+pymysql
+configparser
+request
+redirect
+url_for
+json
+os
+flask_login
+LoginManager
+current_user
+login_user
+logout_user
