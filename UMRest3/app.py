@@ -125,12 +125,12 @@ def logout():
 
 @app.route('/getAll')
 def getAll():
-    #if current_user.is_authenticated:
+    if current_user.is_authenticated:
 
         
         return connection.getAll()
-    #else:
-     #   return "please login"
+    else:
+        return "please login"
 
 
 
