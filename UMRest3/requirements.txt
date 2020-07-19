@@ -1,6 +1,5 @@
 Flask
 jsonify
-request
 MySQL
 pymysql
 configparser
