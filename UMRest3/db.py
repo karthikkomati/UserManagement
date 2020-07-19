@@ -9,9 +9,9 @@ def getConnection():
     config.read('config.ini')
     
     db = mysql.connector.connect(
-        host=config["UserManagement"]['MYSQL_DATABASE_HOST'],
-        user=config["UserManagement"]['MYSQL_DATABASE_USER'],
-        password=config["UserManagement"]['MYSQL_DATABASE_PASSWORD'],
+        host=os.environ.get("DATABASE_HOST", None),
+        user=os.environ.get("DATABASE_USERNAME", None),
+        password=os.environ.get("DATABASE_PASSWORD", None),
         database = config["UserManagement"]['MYSQL_DATABASE_DB']
     )
     return db
