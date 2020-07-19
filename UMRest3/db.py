@@ -2,7 +2,7 @@ import pymysql
 import mysql.connector
 from flask import jsonify
 import configparser
-
+import os
 
 def getConnection():
     config = configparser.ConfigParser()
