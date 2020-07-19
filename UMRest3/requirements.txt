@@ -3,6 +3,7 @@ jsonify
 MySQL
 pymysql
 configparser
+flask
 request
 redirect
 url_for
