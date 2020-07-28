@@ -289,11 +289,11 @@ def getPermissionInGroup():
 def resource_not_found(e):
     return jsonify(error=str(e)), 404
 
-@app.errorhandler(500)
-def internal_error(error):
+#@app.errorhandler(500)
+#def internal_error(error):
     
-    print(error)
-    return "Error: Invalid values entered"    
+#    print(error)
+#    return "Error: Invalid values entered"    
     
     
 if __name__ == '__main__':
