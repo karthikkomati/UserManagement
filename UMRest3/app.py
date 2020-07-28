@@ -35,7 +35,7 @@ GOOGLE_DISCOVERY_URL = (
 
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
+app.secret_key = os.environ.get("SECRET_KEY")
 
 # User session management setup
 # https://flask-login.readthedocs.io/en/latest
