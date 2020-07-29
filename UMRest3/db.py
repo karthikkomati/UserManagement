@@ -3,6 +3,7 @@ import mysql.connector
 from flask import jsonify
 import configparser
 import os
+from user import User
 
 def getConnection():
     config = configparser.ConfigParser()
@@ -302,3 +303,25 @@ def getPermissionInGroup(groupname,permission):
         return resp
     except pymysql.err.ProgrammingError:       
         return("enter valid groupname and permission")
+    
+def addCurrentUser(user_id,name,email):
+    #try:
+        db = getConnection()
+        mycursor = db.cursor(dictionary=True)
+        q = "Insert into CurrentUsers(id,name,email) values (%s,%s,%s)"
+        mycursor.execute(q,(user_id,name,email))
+        db.commit()
+        db.close()
+    #except mysql.connector.errors.IntegrityError:
+     #   return
+    
+   
+def getCurrentUser(user_id):
+    db = getConnection()
+    mycursor = db.cursor()
+    q = "select id,name,email from CurrentUsers where id = %s"
+    mycursor.execute(q,(user_id,))
+    rows=mycursor.fetchall()
+    if rows:
+        user = User(id_=rows[0][0], name=rows[0][2], email=rows[0][2])
+        return user
