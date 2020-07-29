@@ -54,7 +54,7 @@ def get_google_provider_cfg():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return users[user_id]
+    return connection.getCurrentUser(user_id)
 
 @app.route("/login")
 def login():
@@ -112,6 +112,8 @@ def loginCallback():
     user = User(
         id_=unique_id, name=users_name, email=users_email
     )
+    if not connection.getCurrentUser(unique_id):
+        connection.addCurrentUser(unique_id,users_name,users_email)
     users[unique_id]= user
     login_user(user)
     return redirect(url_for("getAll"))
